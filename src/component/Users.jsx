@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react'
 import { userData } from './hooks/UsersData.js'
-
+import User from './User.jsx'
 const Users = () => {
   const [users, setUsers] = useState(userData)
   const userTitle = useRef(null)
@@ -20,18 +20,7 @@ const Users = () => {
           Users
         </h1>
         <ul className=" bg-zinc-300 p-4 w-[150px] flex flex-col text-center items-center justify-center">
-          {users.map((user, index) => {
-            return (
-              <div
-                key={index}
-                className="flex flex-row text-center items-center justify-evenly w-[100%] text-black"
-              >
-                <li>{user.name} </li>
-                <li>{user.age} </li>
-                <li>{user.gender} </li>
-              </div>
-            )
-          })}
+          <User users={users} />
         </ul>
         {users.length > 1 ? (
           <button
