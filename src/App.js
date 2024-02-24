@@ -1,6 +1,6 @@
-import react from 'react'
+import Users from './component/Users.jsx'
 function App() {
-  return <h1>Hello World</h1>
+  return <Users />
 }
 
 export default App
