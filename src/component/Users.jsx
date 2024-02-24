@@ -1,13 +1,16 @@
-import React, { useDebugValue } from 'react'
+import React, { useState, useRef } from 'react'
 import { userData } from './hooks/UsersData.js'
 
 const Users = () => {
+  const [users, setUsers] = useState(userData)
+  const userTitle = useRef(null)
+
   return (
     <>
       <div>
-        <h1>Users</h1>
+        <h1 ref={userTitle}>Users</h1>
         <ul>
-          {userData.map((user, indx) => {
+          {users.map((user, indx) => {
             return (
               <div key={user.indx}>
                 <li>{user.name} </li>
@@ -17,6 +20,14 @@ const Users = () => {
             )
           })}
         </ul>
+        <button
+          onClick={() => {
+            setUsers([])
+            userTitle.current.textContent = 'users removed successfully'
+          }}
+        >
+          remove all
+        </button>
       </div>
     </>
   )
